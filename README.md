@@ -1,20 +1,48 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Magnus Landing
 
-# Run and deploy your AI Studio app
+Marketing landing site for Magnus Chain. Built with Next.js 15 (App Router), statically exported, deployed to Cloudflare Pages.
 
-This contains everything you need to run your app locally.
+## Local development
 
-View your app in AI Studio: https://ai.studio/apps/cac4fd93-f66f-4f4d-838b-a27b5b921c94
+```bash
+npm install
+npm run dev
+```
 
-## Run Locally
+Open http://localhost:3000.
 
-**Prerequisites:**  Node.js
+## Build
 
+```bash
+npm run build
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Static output is written to `out/`.
+
+## Deployment (Cloudflare Pages)
+
+- **Framework preset:** Next.js (Static HTML Export)
+- **Build command:** `npm run build`
+- **Output directory:** `out`
+- **Node version:** 20
+
+## Tech stack
+
+- Next.js 15 — App Router, static export
+- React 19
+- TypeScript
+- Tailwind v4 (`@tailwindcss/postcss`)
+- Three.js — 3D background
+- Motion (framer-motion) — entry animations
+
+## Project structure
+
+- `app/` — App Router pages and root layout
+- `components/` — UI components
+  - `components/sections/` — landing-page sections
+- `lib/` — shared data and utilities
+- `public/` — static assets
+
+## Notes
+
+- `metadataBase` and Open Graph URLs in `app/layout.tsx` use `https://magnus.network` as a placeholder. Replace with the real production domain before launch.
