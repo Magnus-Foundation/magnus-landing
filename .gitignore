@@ -33,3 +33,4 @@ yarn-error.log*
 next-env.d.ts
 
 # vite leftovers (will be deleted in Task 13)
+.gstack/

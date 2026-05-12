@@ -6,7 +6,7 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-inter",
   display: "swap",
 });
@@ -21,32 +21,26 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Magnus — The stablecoin blockchain",
   description:
-    "The unified Layer-1 uniting every stablecoin across every chain and bank account into a single liquidity layer. No destination gas fees.",
-  metadataBase: new URL("https://magnus.network"),
+    "An EVM-compatible Layer 1 for stablecoin payments in emerging markets. Pay gas in mVND, USDT, USDC, or any MIP-20 token. VietQR, M-Pesa, GCash, UPI, and PIX natively.",
+  metadataBase: new URL("https://magnuschain.xyz"),
   openGraph: {
     title: "Magnus — The stablecoin blockchain",
-    description:
-      "The unified Layer-1 uniting every stablecoin across every chain and bank account into a single liquidity layer.",
-    url: "https://magnus.network",
+    description: "Pay gas in any stablecoin. Native VietQR, M-Pesa, GCash, UPI, PIX rails.",
+    url: "https://magnuschain.xyz",
     siteName: "Magnus",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Magnus — The stablecoin blockchain",
-    description:
-      "The unified Layer-1 uniting every stablecoin across every chain and bank account into a single liquidity layer.",
+    description: "Pay gas in any stablecoin. No bridging. Built for emerging markets.",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
-      <body className="min-h-screen bg-bg text-text-main flex flex-col font-sans overflow-x-hidden selection:bg-brand-light/20 selection:text-brand-light">
+      <body className="min-h-screen bg-bg text-text-main flex flex-col font-sans overflow-x-hidden">
         <Navbar />
         <main className="flex-1 w-full">{children}</main>
         <Footer />

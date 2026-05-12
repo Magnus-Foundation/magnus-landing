@@ -1,17 +1,111 @@
+import { MagnusLogo } from "./MagnusLogo";
+
+const linkGroups = [
+  {
+    label: "sys.product",
+    links: [
+      { name: "Gas Layer",     href: "#gas" },
+      { name: "Gateway",       href: "#gateway" },
+      { name: "Netting Engine",href: "#netting" },
+      { name: "EVM Runtime",   href: "#evm" },
+    ],
+  },
+  {
+    label: "sys.developers",
+    links: [
+      { name: "Documentation", href: "https://docs.magnuschain.xyz" },
+      { name: "API Reference",  href: "https://docs.magnuschain.xyz" },
+      { name: "GitHub",         href: "#github" },
+      { name: "Bug Bounty",     href: "#bounty" },
+    ],
+  },
+  {
+    label: "sys.network",
+    links: [
+      { name: "Validators", href: "#validators" },
+      { name: "Explorer",   href: "https://devnet.magnuschain.xyz" },
+      { name: "Bridge",     href: "#bridge" },
+    ],
+  },
+  {
+    label: "sys.company",
+    links: [
+      { name: "About",   href: "#about" },
+      { name: "Blog",    href: "#blog" },
+      { name: "Careers", href: "#careers" },
+      { name: "Contact", href: "#contact" },
+    ],
+  },
+];
+
+const socialLinks = [
+  { name: "Twitter",  href: "#twitter" },
+  { name: "Discord",  href: "#discord" },
+  { name: "Telegram", href: "#telegram" },
+  { name: "Mirror",   href: "#mirror" },
+];
+
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-border py-12 px-6 md:px-12 w-full">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-sm text-text-muted">
-        <div className="flex gap-4 items-center">
-          <span className="text-brand font-medium flex items-center gap-2">
-            <span className="block w-2 h-2 rounded-full bg-brand-light" />
-            Magnus Network
-          </span>
+    <footer className="relative z-10 border-t border-border bg-bg w-full">
+      <div className="mx-auto px-6 md:px-12 pt-20 pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-12 gap-10 lg:gap-8 mb-16">
+          <div className="col-span-2 md:col-span-6 lg:col-span-4 flex flex-col">
+            <div className="flex items-center gap-3 mb-6">
+              <MagnusLogo className="w-11 h-11 text-text-main" />
+              <span className="font-sans font-semibold text-2xl tracking-tight text-text-main">
+                Magnus
+              </span>
+            </div>
+            <p className="text-text-muted text-sm leading-relaxed max-w-xs">
+              The settlement layer for stablecoins, across every chain and bank.
+            </p>
+          </div>
+
+          {linkGroups.map((group) => (
+            <div key={group.label} className="md:col-span-3 lg:col-span-2">
+              <div className="font-mono text-xs uppercase tracking-widest text-text-dim mb-5">
+                {group.label}
+              </div>
+              <ul className="flex flex-col gap-3">
+                {group.links.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-text-main hover:text-brand transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-        <div className="flex gap-8">
-          <a href="#" className="hover:text-brand-light transition">Twitter</a>
-          <a href="#" className="hover:text-brand-light transition">Docs</a>
-          <a href="#" className="hover:text-brand-light transition">GitHub</a>
+
+        <div className="border-t border-border pt-8 flex flex-col-reverse md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 font-mono text-xs text-text-dim">
+            <span>© {new Date().getFullYear()} Magnus Labs Inc.</span>
+            <div className="flex gap-6">
+              <a href="#privacy"  className="hover:text-brand transition-colors">Privacy</a>
+              <a href="#terms"    className="hover:text-brand transition-colors">Terms</a>
+              <a href="#security" className="hover:text-brand transition-colors">Security</a>
+            </div>
+          </div>
+          <div className="flex items-center gap-1">
+            {socialLinks.map((s, i) => (
+              <a
+                key={s.name}
+                href={s.href}
+                aria-label={s.name}
+                className={`font-mono text-xs uppercase tracking-widest text-text-muted hover:text-brand transition-colors px-3 py-2 ${
+                  i < socialLinks.length - 1 ? "border-r border-border" : ""
+                }`}
+              >
+                {s.name}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

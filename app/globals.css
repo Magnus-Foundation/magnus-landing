@@ -1,25 +1,31 @@
 @import "tailwindcss";
 
 @theme {
+  /* Match Magnus docs exactly: Inter everywhere */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
 
-  --color-brand: #0F172A;
-  --color-brand-light: #2563EB;
-  --color-accent: #2563EB;
-  --color-gold: #B45309;
-  --color-green: #059669;
-  --color-red: #DC2626;
+  /* ── Magnus brand colors (from docs CSS: --primary: 232 160 32) ── */
+  --color-brand:       #E8A020;   /* amber primary — active links, CTAs       */
+  --color-brand-light: #F5B84A;   /* amber hover / lighter amber               */
+  --color-accent:      #E8A020;   /* same amber                                */
 
-  --color-bg: #FFFFFF;
-  --color-surface: #F8FAFC;
-  --color-surface-hover: #F1F5F9;
-  --color-border: #E2E8F0;
+  /* Supplementary */
+  --color-green: #22C55E;
+  --color-red:   #EF4444;
+  --color-gold:  #E8A020;
 
-  --color-text-main: #0F172A;
-  --color-text-muted: #475569;
-  --color-text-dim: #94A3B8;
+  /* ── Backgrounds — docs dark: rgb(11 25 41) = #0B1929 ── */
+  --color-bg:           #0B1929;  /* docs --background-dark exactly            */
+  --color-surface:      #0F2035;  /* slightly elevated                         */
+  --color-surface-hover:#132540;  /* hover surface                             */
+  --color-border:       #1E3352;  /* warm dark border                          */
+
+  /* ── Text — warm grays matching docs ── */
+  --color-text-main:  #F9F7F3;   /* docs gray-50: 249 247 243                 */
+  --color-text-muted: #777470;   /* docs gray-500: 119 116 112                */
+  --color-text-dim:   #3A3530;   /* docs gray-800 tinted darker               */
 }
 
 body {
@@ -27,19 +33,51 @@ body {
   color: var(--color-text-main);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
+  /* Subtle amber radial bloom from top matching docs warmth */
+  background-image:
+    radial-gradient(ellipse 100% 50% at 10% 0%, rgba(232,160,32,0.055) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 40% at 90% 100%, rgba(232,160,32,0.03) 0%, transparent 50%);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+::selection { background: rgba(232,160,32,0.22); color: #F9F7F3; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--color-bg); }
+::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 9999;
 }
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
+
+/* Grid background helper */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(30,51,82,0.45) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,51,82,0.45) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+
+/* Amber glow card */
+.glow-amber { box-shadow: 0 0 40px rgba(232,160,32,0.10), 0 0 80px rgba(232,160,32,0.04); }
+.glow-subtle { box-shadow: 0 0 0 1px rgba(232,160,32,0.12), 0 8px 32px rgba(0,0,0,0.4); }
+
+/* Live pulse */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.35; transform: scale(0.8); }
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-dim);
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }

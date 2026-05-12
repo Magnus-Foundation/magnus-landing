@@ -3,23 +3,24 @@ import { SectionLabel } from "./SectionLabel";
 const RAILS = [
   { name: "VietQR", region: "VN", type: "Instant Payment" },
   { name: "M-Pesa", region: "KE", type: "Mobile Money" },
-  { name: "GCash", region: "PH", type: "E-Wallet" },
-  { name: "UPI", region: "IN", type: "Real-time Payment" },
-  { name: "PIX", region: "BR", type: "Instant Payment" },
+  { name: "GCash",  region: "PH", type: "E-Wallet" },
+  { name: "UPI",    region: "IN", type: "Real-time Payment" },
+  { name: "PIX",    region: "BR", type: "Instant Payment" },
 ];
 
 export function Gateway() {
   return (
     <section id="gateway" className="py-24 border-t border-border relative overflow-hidden">
-      <div className="max-w-3xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="relative z-10">
         <SectionLabel num="02" label="Fiat Rails" />
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8 leading-tight text-brand">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8 leading-tight text-text-main">
           Native Gateway Protocol
         </h2>
 
         <div className="mb-12">
           <p className="text-lg text-text-muted leading-relaxed">
-            Native fiat rail integration. <strong className="text-brand font-medium">MGP</strong> offers gateway precompiles, on-chain escrow, and slashable settlement attestations.
+            Native fiat rail integration. <strong className="text-text-main font-medium">MGP</strong> offers gateway
+            precompiles, on-chain escrow, and slashable settlement attestations.
           </p>
         </div>
 
@@ -28,8 +29,8 @@ export function Gateway() {
             {RAILS.map((rail) => (
               <div key={rail.name} className="flex justify-between items-center py-4 group">
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-xs text-text-dim w-8 group-hover:text-brand-light/70 transition-colors">{rail.region}</span>
-                  <span className="font-medium text-brand group-hover:text-brand-light transition-colors">{rail.name}</span>
+                  <span className="font-mono text-xs text-text-dim w-8 group-hover:text-brand/70 transition-colors">{rail.region}</span>
+                  <span className="font-medium text-text-main group-hover:text-brand transition-colors">{rail.name}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <span className="text-sm text-text-muted hidden sm:block">{rail.type}</span>
@@ -40,7 +41,7 @@ export function Gateway() {
           </div>
         </div>
 
-        <div className="border-l-2 border-brand-light/30 pl-4 py-1 mt-12">
+        <div className="border-l-2 border-brand/30 pl-4 py-1 mt-12">
           <p className="text-sm text-text-dim">
             Protocol primitives, not application-layer wrappers. Integrated with Magnus Bridge Standard (MBS).
           </p>

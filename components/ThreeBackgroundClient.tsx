@@ -2,7 +2,9 @@
 import dynamic from "next/dynamic";
 
 export const ThreeBackgroundClient = dynamic(
-  () =>
-    import("./ThreeBackground").then((m) => ({ default: m.ThreeBackground })),
+  async () => {
+    const { ThreeBackground } = await import("./ThreeBackground");
+    return ThreeBackground;
+  },
   { ssr: false }
 );
