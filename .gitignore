@@ -34,3 +34,13 @@ next-env.d.ts
 
 # vite leftovers (will be deleted in Task 13)
 .gstack/
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+
+!.env.example
