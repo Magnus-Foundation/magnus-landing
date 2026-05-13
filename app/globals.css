@@ -16,16 +16,16 @@
   --color-red:   #EF4444;
   --color-gold:  #E8A020;
 
-  /* ── Backgrounds — docs dark: rgb(11 25 41) = #0B1929 ── */
-  --color-bg:           #0B1929;  /* docs --background-dark exactly            */
-  --color-surface:      #0F2035;  /* slightly elevated                         */
-  --color-surface-hover:#132540;  /* hover surface                             */
-  --color-border:       #1E3352;  /* warm dark border                          */
+  /* ── Backgrounds — Terminal: pure black ── */
+  --color-bg:           #000000;
+  --color-surface:      #080808;
+  --color-surface-hover:#111111;
+  --color-border:       #E8A020;  /* amber — use with /10 /20 /30 opacity modifiers */
 
-  /* ── Text — warm grays matching docs ── */
-  --color-text-main:  #F9F7F3;   /* docs gray-50: 249 247 243                 */
-  --color-text-muted: #777470;   /* docs gray-500: 119 116 112                */
-  --color-text-dim:   #3A3530;   /* docs gray-800 tinted darker               */
+  /* ── Text ── */
+  --color-text-main:  #FFFFFF;
+  --color-text-muted: #8A8A8A;
+  --color-text-dim:   #E8A020;   /* amber for labels/accents */
 }
 
 body {
@@ -33,10 +33,22 @@ body {
   color: var(--color-text-main);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
-  /* Subtle amber radial bloom from top matching docs warmth */
-  background-image:
-    radial-gradient(ellipse 100% 50% at 10% 0%, rgba(232,160,32,0.055) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 40% at 90% 100%, rgba(232,160,32,0.03) 0%, transparent 50%);
+}
+
+/* Scanline texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 1px,
+    rgba(0, 0, 0, 0.03) 1px,
+    rgba(0, 0, 0, 0.03) 2px
+  );
 }
 
 ::selection { background: rgba(232,160,32,0.22); color: #F9F7F3; }
@@ -46,23 +58,17 @@ body {
 ::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
 
-/* Grain overlay */
+/* Amber vignette glow — bottom-left */
 body::after {
   content: '';
   position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-  opacity: 0.015;
+  bottom: -10%;
+  left: -10%;
+  width: 70%;
+  height: 70%;
   pointer-events: none;
-  z-index: 9999;
-}
-
-/* Grid background helper */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(30,51,82,0.45) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30,51,82,0.45) 1px, transparent 1px);
-  background-size: 72px 72px;
+  z-index: 0;
+  background: radial-gradient(ellipse at bottom left, rgba(232,160,32,0.06) 0%, transparent 65%);
 }
 
 /* Amber glow card */
@@ -76,8 +82,35 @@ body::after {
 }
 .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
 
-/* Gradient text animation */
-@keyframes gradient-shift {
-  0%   { background-position: 0% center; }
-  100% { background-position: 200% center; }
+/* Terminal line fade-in animation */
+@keyframes terminal-line-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.terminal-line {
+  opacity: 0;
+  animation: terminal-line-in 0.1s ease forwards;
+  white-space: pre;
+  line-height: 1.5;
+}
+
+.terminal-cursor-line {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  animation: terminal-line-in 0.1s ease forwards;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 14px;
+  background-color: #E8A020;
+  animation: blink 1s step-end infinite;
 }

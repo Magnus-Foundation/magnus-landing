@@ -1,4 +1,9 @@
+"use client";
+
 import { SectionLabel } from "./SectionLabel";
+import {
+  SectionContainer, AnimLabel, AnimHeading, AnimBody, AnimRows, AnimRow,
+} from "../SectionAnimations";
 
 const RAILS = [
   { name: "VietQR", region: "VN", type: "Instant Payment" },
@@ -10,43 +15,54 @@ const RAILS = [
 
 export function Gateway() {
   return (
-    <section id="gateway" className="py-24 border-t border-border relative overflow-hidden">
-      <div className="relative z-10">
-        <SectionLabel num="02" label="Fiat Rails" />
-        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8 leading-tight text-text-main">
-          Native Gateway Protocol
-        </h2>
+    <section id="gateway" className="relative z-10 py-24 border-t border-brand/20 overflow-hidden">
+      <SectionContainer>
+        <AnimLabel>
+          <SectionLabel num="02" label="Fiat Rails" />
+        </AnimLabel>
 
-        <div className="mb-12">
-          <p className="text-lg text-text-muted leading-relaxed">
-            Native fiat rail integration. <strong className="text-text-main font-medium">MGP</strong> offers gateway
-            precompiles, on-chain escrow, and slashable settlement attestations.
+        <AnimHeading className="mb-8">
+          <h2 className="font-black text-3xl md:text-4xl uppercase tracking-tight leading-tight text-text-main">
+            Native Gateway Protocol
+          </h2>
+        </AnimHeading>
+
+        <AnimBody className="mb-12">
+          <p className="font-mono text-sm text-text-muted leading-relaxed max-w-xl">
+            Native fiat rail integration.{" "}
+            <span className="text-brand">MGP</span> offers gateway precompiles,
+            on-chain escrow, and slashable settlement attestations.
           </p>
-        </div>
+        </AnimBody>
 
-        <div className="mt-8">
-          <div className="border-y border-border/40 divide-y divide-border/40">
-            {RAILS.map((rail) => (
-              <div key={rail.name} className="flex justify-between items-center py-4 group">
-                <div className="flex items-center gap-4">
-                  <span className="font-mono text-xs text-text-dim w-8 group-hover:text-brand/70 transition-colors">{rail.region}</span>
-                  <span className="font-medium text-text-main group-hover:text-brand transition-colors">{rail.name}</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-sm text-text-muted hidden sm:block">{rail.type}</span>
-                  <span className="font-mono text-[10px] text-green tracking-widest">ACTIVE</span>
-                </div>
+        <AnimRows className="border border-brand/20">
+          {RAILS.map((rail, i) => (
+            <AnimRow
+              key={rail.name}
+              className={`flex justify-between items-center px-6 py-4 group hover:bg-brand/5 transition-colors ${i > 0 ? "border-t border-brand/20" : ""}`}
+            >
+              <div className="flex items-center gap-6">
+                <span className="font-mono text-[10px] tracking-widest text-brand/40 w-6">{rail.region}</span>
+                <span className="font-mono text-sm font-bold uppercase tracking-[0.12em] text-text-main group-hover:text-brand transition-colors">
+                  {rail.name}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
+              <div className="flex items-center gap-6">
+                <span className="font-mono text-xs text-text-muted hidden sm:block">{rail.type}</span>
+                <span className="font-mono text-[10px] tracking-widest text-green">ACTIVE</span>
+              </div>
+            </AnimRow>
+          ))}
+        </AnimRows>
 
-        <div className="border-l-2 border-brand/30 pl-4 py-1 mt-12">
-          <p className="text-sm text-text-dim">
-            Protocol primitives, not application-layer wrappers. Integrated with Magnus Bridge Standard (MBS).
-          </p>
-        </div>
-      </div>
+        <AnimBody>
+          <div className="border-l-2 border-brand/30 pl-4 py-1 mt-10">
+            <p className="font-mono text-xs text-text-muted">
+              Protocol primitives, not application-layer wrappers. Integrated with Magnus Bridge Standard (MBS).
+            </p>
+          </div>
+        </AnimBody>
+      </SectionContainer>
     </section>
   );
 }

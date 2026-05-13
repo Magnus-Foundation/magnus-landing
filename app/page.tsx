@@ -6,7 +6,7 @@ import { Netting } from "@/components/sections/Netting";
 
 export default function Home() {
   return (
-    <div className="w-full max-w-3xl px-6 md:px-12 mx-auto">
+    <div className="w-full max-w-6xl px-6 md:px-16 mx-auto">
       <Hero />
       <Gas />
       <Gateway />
