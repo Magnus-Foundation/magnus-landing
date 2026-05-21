@@ -13,8 +13,8 @@ const linkGroups = [
   {
     label: "sys.developers",
     links: [
-      { name: "Documentation", href: "https://docs.magnuschain.xyz" },
-      { name: "API Reference",  href: "https://docs.magnuschain.xyz" },
+      { name: "Documentation", href: "https://docs.magnus.foundation" },
+      { name: "API Reference",  href: "https://docs.magnus.foundation" },
       { name: "GitHub",         href: "#github" },
       { name: "Bug Bounty",     href: "#bounty" },
     ],
@@ -23,7 +23,7 @@ const linkGroups = [
     label: "sys.network",
     links: [
       { name: "Validators", href: "#validators" },
-      { name: "Explorer",   href: "https://devnet.magnuschain.xyz" },
+      { name: "Explorer",   href: "https://devnet.magnus.foundation" },
       { name: "Bridge",     href: "#bridge" },
     ],
   },

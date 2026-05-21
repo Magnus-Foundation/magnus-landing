@@ -18,7 +18,7 @@ export function Navbar() {
         </div>
         <div>
           <a
-            href="https://docs.magnuschain.xyz"
+            href="https://docs.magnus.foundation"
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-brand border border-brand px-4 py-2 hover:bg-brand hover:text-bg transition-colors cursor-pointer"

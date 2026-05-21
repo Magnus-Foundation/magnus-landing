@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useTransform, animate } from "motion/react";
 
 const TERMINAL_LINES = [
-  { type: "prompt", text: "$ magnus connect --chain staccato --rpc staccato-rpc.magnuschain.xyz", delay: 0.3 },
+  { type: "prompt", text: "$ magnus connect --chain staccato --rpc staccato-rpc.magnus.foundation", delay: 0.3 },
   { type: "output", text: "> Connecting...", delay: 0.9 },
   { type: "output", text: "> ✓ Connected to Staccato (Devnet)", delay: 1.4 },
   { type: "text",   text: "> Block height: #4,219,847", delay: 1.8 },
@@ -188,7 +188,7 @@ export function Hero() {
         transition={{ duration: 0.4, delay: 0.8 }}
       >
         <a
-          href="https://docs.magnuschain.xyz"
+          href="https://docs.magnus.foundation"
           target="_blank"
           rel="noopener noreferrer"
           className="font-mono text-xs font-bold tracking-[0.18em] uppercase text-brand border border-brand px-8 py-4 hover:bg-brand hover:text-bg transition-colors cursor-pointer"
@@ -196,7 +196,7 @@ export function Hero() {
           [ READ_DOCS ]
         </a>
         <a
-          href="https://docs.magnuschain.xyz/quickstart"
+          href="https://docs.magnus.foundation/quickstart"
           target="_blank"
           rel="noopener noreferrer"
           className="font-mono text-xs font-bold tracking-[0.18em] uppercase text-brand/60 border border-brand/20 px-8 py-4 hover:border-brand/50 hover:text-brand transition-all cursor-pointer"

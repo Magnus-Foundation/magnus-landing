@@ -49,7 +49,7 @@ export function BuildCTA() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://docs.magnuschain.xyz/quickstart"
+            href="https://docs.magnus.foundation/quickstart"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 bg-brand text-bg font-semibold px-8 py-4 rounded-sm hover:bg-brand-light transition-colors cursor-pointer text-sm"
@@ -60,7 +60,7 @@ export function BuildCTA() {
             </svg>
           </a>
           <a
-            href="https://docs.magnuschain.xyz"
+            href="https://docs.magnus.foundation"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 border border-border text-text-muted font-mono text-xs px-8 py-4 rounded-sm hover:border-text-muted hover:text-text-main transition-all cursor-pointer tracking-widest uppercase"

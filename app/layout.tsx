@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   title: "Magnus — The stablecoin blockchain",
   description:
     "An EVM-compatible Layer 1 for stablecoin payments in emerging markets. Pay gas in mVND, USDT, USDC, or any MIP-20 token. VietQR, M-Pesa, GCash, UPI, and PIX natively.",
-  metadataBase: new URL("https://magnuschain.xyz"),
+  metadataBase: new URL("https://magnus.foundation"),
   openGraph: {
     title: "Magnus — The stablecoin blockchain",
     description: "Pay gas in any stablecoin. Native VietQR, M-Pesa, GCash, UPI, PIX rails.",
-    url: "https://magnuschain.xyz",
+    url: "https://magnus.foundation",
     siteName: "Magnus",
     type: "website",
   },
