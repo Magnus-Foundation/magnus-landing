@@ -37,20 +37,18 @@ export function Netting() {
 
       {/* Column headers */}
       <AnimBody className="mb-2">
-        <div className="font-mono text-[10px] grid gap-4" style={{ gridTemplateColumns: "9rem 1fr 1fr" }}>
+        <div className="font-mono text-[10px] grid gap-3 sm:gap-4 grid-cols-[6rem_1fr_1fr] sm:grid-cols-[9rem_1fr_1fr]">
           <span className="text-white/20"></span>
           <span className="text-white/30 uppercase tracking-widest">Legacy</span>
           <span className="text-brand/70 uppercase tracking-widest">Magnus</span>
         </div>
-        <div className="font-mono text-[10px] text-white/10 mt-1 mb-3">
-          {"─────────────  ────────────────────  ────────────────────"}
-        </div>
+        <div className="border-t border-white/10 mt-1 mb-3" />
       </AnimBody>
 
       <AnimRows className="space-y-2">
         {COMPARISON.map((row) => (
           <AnimRow key={row.key}>
-            <div className="font-mono text-sm grid gap-4 items-baseline" style={{ gridTemplateColumns: "9rem 1fr 1fr" }}>
+            <div className="font-mono text-sm grid gap-3 sm:gap-4 items-baseline grid-cols-[6rem_1fr_1fr] sm:grid-cols-[9rem_1fr_1fr]">
               <span className="text-white/30 text-xs">{row.key}</span>
               <span className="text-white/30 text-xs">{row.legacy}</span>
               <span className={`text-xs font-bold ${row.highlight ? "text-green" : "text-text-main"}`}>

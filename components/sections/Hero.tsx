@@ -24,7 +24,7 @@ interface StatItem {
 
 const STATS: StatItem[] = [
   { num: "10,000", label: "TPS",        countTo: 10000, suffix: "" },
-  { num: "0.3s",   label: "FINALITY",   countTo: 3,     prefix: "0.", suffix: "s", decimals: 1 },
+  { num: "0.3s",   label: "FINALITY",   countTo: 0.3,   suffix: "s",      decimals: 1 },
   { num: "$0.0001",label: "GAS FEES",   countTo: 1,     prefix: "$0.000", suffix: "" },
   { num: "EVM",    label: "COMPATIBLE" },
 ];
@@ -113,7 +113,7 @@ export function Hero() {
       <h1 style={{ lineHeight: 0.88, letterSpacing: "-0.03em" }}>
         <motion.span
           className="block font-black text-text-main uppercase"
-          style={{ fontSize: "clamp(72px, 11vw, 144px)" }}
+          style={{ fontSize: "clamp(44px, 11vw, 144px)" }}
           initial={{ clipPath: "inset(0 100% 0 0)", opacity: 1 }}
           animate={headlineVisible ? { clipPath: "inset(0 0% 0 0)" } : {}}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
@@ -122,7 +122,7 @@ export function Hero() {
         </motion.span>
         <motion.span
           className="block font-black text-brand uppercase"
-          style={{ fontSize: "clamp(72px, 11vw, 144px)" }}
+          style={{ fontSize: "clamp(44px, 11vw, 144px)" }}
           initial={{ clipPath: "inset(0 100% 0 0)", opacity: 1 }}
           animate={headlineVisible ? { clipPath: "inset(0 0% 0 0)" } : {}}
           transition={{ duration: 0.55, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
@@ -159,7 +159,7 @@ export function Hero() {
             MAGNUS CLI — STACCATO DEVNET
           </span>
         </div>
-        <div className="p-6 flex flex-col gap-1.5 font-mono text-[13px]">
+        <div className="p-4 sm:p-6 flex flex-col gap-1.5 font-mono text-[11px] sm:text-[13px] overflow-x-auto">
           {TERMINAL_LINES.map((line, i) => (
             <div
               key={i}
@@ -218,7 +218,7 @@ export function Hero() {
             animate={statsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4, delay: i * 0.08 }}
           >
-            <span className="font-black text-5xl text-brand leading-none" style={{ letterSpacing: "-0.02em" }}>
+            <span className="font-black text-3xl sm:text-4xl md:text-5xl text-brand leading-none" style={{ letterSpacing: "-0.02em" }}>
               <AnimatedStat stat={stat} inView={statsInView} />
             </span>
             <span className="font-mono text-[10px] tracking-[0.22em] uppercase" style={{ color: "rgba(255,255,255,0.4)" }}>
