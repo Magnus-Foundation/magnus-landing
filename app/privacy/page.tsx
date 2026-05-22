@@ -33,8 +33,8 @@ export default function PrivacyPolicyPage() {
         <p>
           This policy explains what information we collect, why we collect it, how we
           use it, and the choices you have. We can be reached at{" "}
-          <a className="text-brand hover:underline" href="mailto:info@magnuschain.xyz">
-            info@magnuschain.xyz
+          <a className="text-brand hover:underline" href="mailto:info@magnus.foundation">
+            info@magnus.foundation
           </a>
           .
         </p>
@@ -55,7 +55,7 @@ export default function PrivacyPolicyPage() {
           </li>
           <li>
             <strong>Support correspondence.</strong> Messages you send to us at{" "}
-            <code className="text-brand">info@magnuschain.xyz</code>.
+            <code className="text-brand">info@magnus.foundation</code>.
           </li>
         </ul>
 
@@ -158,7 +158,7 @@ export default function PrivacyPolicyPage() {
             <strong>Access, correction, deletion.</strong> You may request a copy of
             the personal information we hold about you, ask us to correct it, or ask
             us to delete it, subject to legal exceptions. Email{" "}
-            <a className="text-brand hover:underline" href="mailto:info@magnuschain.xyz">info@magnuschain.xyz</a>.
+            <a className="text-brand hover:underline" href="mailto:info@magnus.foundation">info@magnus.foundation</a>.
           </li>
           <li>
             <strong>Account deletion.</strong> You can delete your Magnus Pay account
@@ -217,8 +217,8 @@ export default function PrivacyPolicyPage() {
         <p>
           Magnus Labs Inc.<br />
           Email:{" "}
-          <a className="text-brand hover:underline" href="mailto:info@magnuschain.xyz">
-            info@magnuschain.xyz
+          <a className="text-brand hover:underline" href="mailto:info@magnus.foundation">
+            info@magnus.foundation
           </a>
         </p>
       </Section>

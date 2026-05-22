@@ -15,7 +15,7 @@ const linkGroups = [
     links: [
       { name: "Documentation", href: "https://docs.magnus.foundation" },
       { name: "API Reference",  href: "https://docs.magnus.foundation" },
-      { name: "GitHub",         href: "#github" },
+      { name: "GitHub",         href: "https://github.com/Magnus-Foundation" },
       { name: "Bug Bounty",     href: "#bounty" },
     ],
   },
@@ -33,7 +33,7 @@ const linkGroups = [
       { name: "About",   href: "#about" },
       { name: "Blog",    href: "#blog" },
       { name: "Careers", href: "#careers" },
-      { name: "Contact", href: "#contact" },
+      { name: "Contact", href: "mailto:info@magnus.foundation" },
     ],
   },
 ];
