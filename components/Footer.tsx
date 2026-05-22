@@ -87,7 +87,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 font-mono text-[10px] text-text-muted">
             <span>© {new Date().getFullYear()} Magnus Labs Inc.</span>
             <div className="flex gap-6">
-              <a href="#privacy"  className="hover:text-brand transition-colors">Privacy</a>
+              <a href="/privacy"  className="hover:text-brand transition-colors">Privacy</a>
               <a href="#terms"    className="hover:text-brand transition-colors">Terms</a>
               <a href="#security" className="hover:text-brand transition-colors">Security</a>
             </div>
