@@ -24,15 +24,15 @@ const linkGroups = [
     links: [
       { name: "Validators", href: "#validators" },
       { name: "Explorer",   href: "https://devnet.magnus.foundation" },
-      { name: "Bridge",     href: "#bridge" },
+      { name: "Bridge",     href: "/bridge" },
     ],
   },
   {
     label: "sys.company",
     links: [
-      { name: "About",   href: "#about" },
-      { name: "Blog",    href: "#blog" },
-      { name: "Careers", href: "#careers" },
+      { name: "About",   href: "/about" },
+      { name: "Blog",    href: "/blog" },
+      { name: "Careers", href: "/careers" },
       { name: "Contact", href: "mailto:info@magnus.foundation" },
     ],
   },
@@ -88,8 +88,8 @@ export function Footer() {
             <span>© {new Date().getFullYear()} Magnus Labs Inc.</span>
             <div className="flex gap-6">
               <a href="/privacy"  className="hover:text-brand transition-colors">Privacy</a>
-              <a href="#terms"    className="hover:text-brand transition-colors">Terms</a>
-              <a href="#security" className="hover:text-brand transition-colors">Security</a>
+              <a href="/terms"    className="hover:text-brand transition-colors">Terms</a>
+              <a href="/security" className="hover:text-brand transition-colors">Security</a>
             </div>
           </div>
           <div className="flex items-center gap-1">

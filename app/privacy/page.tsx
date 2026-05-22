@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SectionLabel } from "@/components/sections/SectionLabel";
+import { PageShell, Section, SubHeading } from "@/components/PageShell";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Magnus",
@@ -12,16 +12,12 @@ const EFFECTIVE_DATE = "May 22, 2026";
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="w-full max-w-3xl px-6 md:px-16 mx-auto py-24 md:py-32">
-      <SectionLabel num="00" label="Legal" />
-
-      <h1 className="font-sans text-3xl md:text-4xl font-semibold tracking-tight mb-3">
-        Privacy Policy
-      </h1>
-      <p className="font-mono text-[11px] tracking-widest uppercase text-text-muted mb-12">
-        Effective {EFFECTIVE_DATE} · Magnus Labs Inc.
-      </p>
-
+    <PageShell
+      num="00"
+      label="Legal"
+      title="Privacy Policy"
+      meta={`Effective ${EFFECTIVE_DATE} · Magnus Labs Inc.`}
+    >
       <Section heading="1. Who we are">
         <p>
           Magnus Labs Inc. (&ldquo;Magnus&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) operates the
@@ -129,11 +125,11 @@ export default function PrivacyPolicyPage() {
       <Section heading="4. Sharing">
         <p>We share information only with the service providers we rely on to run Magnus, and only to the extent each provider needs:</p>
         <ul className="list-disc pl-6 space-y-2">
-          <li><strong>Auth0 (Okta, Inc.)</strong> — authentication.</li>
-          <li><strong>Firebase (Google LLC)</strong> — push notifications.</li>
-          <li><strong>Sentry (Functional Software, Inc.)</strong> — crash and error reporting.</li>
-          <li><strong>Cloudflare, Inc.</strong> — website hosting, DNS, and email routing.</li>
-          <li><strong>Apple Inc. and Google LLC</strong> — app distribution.</li>
+          <li><strong>Auth0 (Okta, Inc.)</strong> for authentication.</li>
+          <li><strong>Firebase (Google LLC)</strong> for push notifications.</li>
+          <li><strong>Sentry (Functional Software, Inc.)</strong> for crash and error reporting.</li>
+          <li><strong>Cloudflare, Inc.</strong> for website hosting, DNS, and email routing.</li>
+          <li><strong>Apple Inc. and Google LLC</strong> for app distribution.</li>
         </ul>
         <p>
           We may also disclose information when required by law, to protect our rights,
@@ -162,7 +158,7 @@ export default function PrivacyPolicyPage() {
           </li>
           <li>
             <strong>Account deletion.</strong> You can delete your Magnus Pay account
-            from within the app (Settings → Account → Delete account) or by
+            from within the app (Settings &rarr; Account &rarr; Delete account) or by
             emailing us. Deleting your account does not erase on-chain transactions.
           </li>
           <li>
@@ -222,27 +218,6 @@ export default function PrivacyPolicyPage() {
           </a>
         </p>
       </Section>
-    </div>
-  );
-}
-
-function Section({ heading, children }: { heading: string; children: React.ReactNode }) {
-  return (
-    <section className="mb-12">
-      <h2 className="font-sans text-xl md:text-2xl font-semibold tracking-tight mb-4 text-text-main">
-        {heading}
-      </h2>
-      <div className="font-sans text-sm md:text-[15px] leading-relaxed text-text-muted space-y-4">
-        {children}
-      </div>
-    </section>
-  );
-}
-
-function SubHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="font-mono text-[11px] tracking-widest uppercase text-brand mt-6 mb-2">
-      {children}
-    </h3>
+    </PageShell>
   );
 }
