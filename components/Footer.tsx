@@ -39,7 +39,7 @@ const linkGroups = [
 ];
 
 const socialLinks = [
-  { name: "Twitter",  href: "#twitter" },
+  { name: "Twitter",  href: "https://x.com/magnus_chain" },
   { name: "Discord",  href: "#discord" },
   { name: "Telegram", href: "#telegram" },
   { name: "Mirror",   href: "#mirror" },

@@ -32,6 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@magnus_chain",
+    creator: "@magnus_chain",
     title: "Magnus — The stablecoin blockchain",
     description: "Pay gas in any stablecoin. No bridging. Built for emerging markets.",
   },
