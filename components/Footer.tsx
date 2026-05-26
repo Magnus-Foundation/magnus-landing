@@ -33,6 +33,7 @@ const linkGroups = [
       { name: "About",   href: "/about" },
       { name: "Blog",    href: "/blog" },
       { name: "Careers", href: "/careers" },
+      { name: "Support", href: "/support" },
       { name: "Contact", href: "mailto:info@magnus.foundation" },
     ],
   },
