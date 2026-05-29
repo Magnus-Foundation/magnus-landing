@@ -1,44 +1,45 @@
-"use client";
-
-import { AnimLabel, AnimHeading, AnimBody, AnimRows, AnimRow } from "../SectionAnimations";
-
-const FEATURES = [
-  { key: "high-performance", label: "High-Performance Execution", desc: "Standard EVM execution environment. Fully compatible with standard Solidity tooling out of the box." },
-  { key: "consensus",        label: "Optimized Consensus",        desc: "Delivers ~200ms blocks with ~300ms deterministic finality." },
-  { key: "mev",              label: "MEV Protection",             desc: "No public mempool. First-come-first-serve ordering natively guarantees no front-running." },
-  { key: "isolation",        label: "Isolated Resource Pools",    desc: "Advanced token standard with dedicated payment lanes to prevent noisy-neighbor contention." },
-];
+import { EyeOff, Layers } from "lucide-react";
 
 export function EVM() {
   return (
-    <section id="evm" className="relative z-10 py-24 border-t border-brand/20">
-      <AnimLabel>
-        <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-brand mb-8">
-          // 04 — PERFORMANCE
-        </div>
-      </AnimLabel>
-
-      <AnimHeading className="mb-10">
-        <h2 className="font-black text-3xl md:text-4xl uppercase tracking-tight leading-[1.1] text-text-main">
-          Standard EVM.<br />Sub-second finality.
+    <div className="wrap">
+      <section className="blk blk-line" id="perf">
+        <h2 className="sec" style={{ maxWidth: "16ch" }}>
+          Standard EVM, sub-second finality.
         </h2>
-      </AnimHeading>
-
-      <AnimBody className="mb-6">
-        <span className="font-mono text-sm text-brand/70">$ magnus query performance --verbose</span>
-      </AnimBody>
-
-      <AnimRows className="space-y-5">
-        {FEATURES.map((f) => (
-          <AnimRow key={f.key} className="flex gap-3">
-            <span className="text-brand mt-0.5 flex-shrink-0 select-none">◆</span>
+        <div className="bento">
+          <div className="cell">
+            <div className="num">200<span className="u">ms</span></div>
+            <div className="lab">Block time</div>
+          </div>
+          <div className="cell">
+            <div className="num">300<span className="u">ms</span></div>
+            <div className="lab">Deterministic finality</div>
+          </div>
+          <div className="cell feat-cell">
+            <div className="ic"><EyeOff size={22} strokeWidth={1.5} /></div>
             <div>
-              <div className="font-mono text-sm font-bold text-text-main mb-1">{f.label}</div>
-              <div className="font-mono text-xs text-white/40 leading-relaxed">{f.desc}</div>
+              <h4>No public mempool</h4>
+              <p>First-come-first-serve ordering guarantees no front-running natively. MEV protection is built in, not bolted on.</p>
             </div>
-          </AnimRow>
-        ))}
-      </AnimRows>
-    </section>
+          </div>
+          <div className="cell feat-cell">
+            <div className="ic"><Layers size={22} strokeWidth={1.5} /></div>
+            <div>
+              <h4>Isolated resource pools</h4>
+              <p>Dedicated payment lanes per token standard prevent noisy-neighbor contention under load.</p>
+            </div>
+          </div>
+          <div className="cell">
+            <div className="num">100<span className="u">%</span></div>
+            <div className="lab">Solidity compatible</div>
+          </div>
+          <div className="cell">
+            <div className="num">∞</div>
+            <div className="lab">Stablecoins supported</div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

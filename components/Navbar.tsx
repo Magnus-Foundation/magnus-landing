@@ -1,31 +1,35 @@
 import { MagnusLogo } from "./MagnusLogo";
 
+const LINKS = [
+  { label: "Gas", href: "#gas" },
+  { label: "Rails", href: "#gateway" },
+  { label: "Netting", href: "#netting" },
+  { label: "Performance", href: "#perf" },
+];
+
 export function Navbar() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-brand/20 bg-bg/90 backdrop-blur-md">
-      <div className="mx-auto px-6 md:px-16 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <MagnusLogo size={36} />
-          <span className="font-mono font-bold text-sm tracking-[0.25em] uppercase text-text-main">
-            Magnus
-          </span>
-        </div>
-        <div className="hidden md:flex items-center gap-6 font-mono text-[11px] uppercase tracking-[0.12em]">
-          <a href="#gas"     className="text-brand/50 hover:text-brand transition-colors">GAS</a>
-          <a href="#gateway" className="text-brand/50 hover:text-brand transition-colors">GATEWAY</a>
-          <a href="#netting" className="text-brand/50 hover:text-brand transition-colors">NETTING</a>
-          <a href="#evm"     className="text-brand/50 hover:text-brand transition-colors">EVM</a>
-        </div>
-        <div>
+    <header className="nav-shell">
+      <div className="wrap">
+        <nav className="nav-inner">
+          <a href="/" className="logo">
+            <MagnusLogo size={26} />
+            MAGNUS
+          </a>
+          <div className="navlinks">
+            {LINKS.map((l) => (
+              <a key={l.href} href={l.href}>{l.label}</a>
+            ))}
+          </div>
           <a
             href="https://docs.magnus.foundation"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-brand border border-brand px-4 py-2 hover:bg-brand hover:text-bg transition-colors cursor-pointer"
+            className="btn btn-primary"
           >
-            READ_DOCS
+            Read docs
           </a>
-        </div>
+        </nav>
       </div>
     </header>
   );

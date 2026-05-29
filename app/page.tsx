@@ -1,17 +1,19 @@
-import { EVM } from "@/components/sections/EVM";
+import { Hero } from "@/components/sections/Hero";
 import { Gas } from "@/components/sections/Gas";
 import { Gateway } from "@/components/sections/Gateway";
-import { Hero } from "@/components/sections/Hero";
 import { Netting } from "@/components/sections/Netting";
+import { EVM } from "@/components/sections/EVM";
+import { BuildCTA } from "@/components/sections/BuildCTA";
 
 export default function Home() {
   return (
-    <div className="w-full max-w-6xl px-6 md:px-16 mx-auto">
+    <>
       <Hero />
       <Gas />
       <Gateway />
       <Netting />
       <EVM />
-    </div>
+      <BuildCTA />
+    </>
   );
 }

@@ -1,64 +1,97 @@
-"use client";
+const MESH = [
+  [270, 95, 210, 154], [270, 95, 90, 154], [270, 95, 30, 95], [270, 95, 90, 36], [270, 95, 210, 36],
+  [210, 154, 90, 154], [210, 154, 30, 95], [210, 154, 90, 36], [210, 154, 210, 36],
+  [90, 154, 30, 95], [90, 154, 90, 36], [90, 154, 210, 36],
+  [30, 95, 90, 36], [30, 95, 210, 36], [90, 36, 210, 36],
+];
 
-import { AnimLabel, AnimHeading, AnimBody, AnimRows, AnimRow } from "../SectionAnimations";
+const NODES: [number, number][] = [
+  [270, 95], [210, 154], [90, 154], [30, 95], [90, 36], [210, 36],
+];
 
-const COMPARISON = [
-  { key: "topology",     legacy: "N² connections",    magnus: "hub-and-spoke",        highlight: false },
-  { key: "efficiency",   legacy: "high rebalancing",  magnus: "internalized savings",  highlight: false },
-  { key: "netting_rate", legacy: "~0%",               magnus: "90%+",                  highlight: true  },
+const LABELS: [number, number, string][] = [
+  [90, 20, "ETH"], [210, 20, "SOL"], [270, 116, "BSC"],
+  [210, 176, "ARB"], [90, 176, "OP"], [30, 116, "AVAX"],
 ];
 
 export function Netting() {
   return (
-    <section id="netting" className="relative z-10 py-24 border-t border-brand/20">
-      <AnimLabel>
-        <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-brand mb-8">
-          // 03 — LIQUIDITY ROUTING
-        </div>
-      </AnimLabel>
-
-      <AnimHeading className="mb-10">
-        <h2 className="font-black text-3xl md:text-4xl uppercase tracking-tight leading-tight text-text-main">
-          Multilateral Netting
+    <div className="wrap">
+      <section className="blk blk-line" id="netting">
+        <h2 className="sec" style={{ maxWidth: "20ch" }}>
+          Most transfers never touch a bridge.
         </h2>
-      </AnimHeading>
-
-      <AnimBody className="mb-6">
-        <span className="font-mono text-sm text-brand/70">$ magnus compare --module netting --vs legacy</span>
-      </AnimBody>
-
-      <AnimBody className="mb-8">
-        <p className="font-mono text-xs text-white/40 leading-relaxed max-w-2xl">
-          Our <span className="text-brand">90%+ netting target</span> means most cross-chain
-          transfers never hit a bridge — they net out. Gas-free outbound sends are sustainable
-          because the protocol covers destination gas using netting savings.
+        <p className="body-m" style={{ marginTop: 18 }}>
+          A 90%+ netting target means cross-chain transfers net out internally. Gas-free outbound
+          sends stay sustainable because netting savings cover destination gas.
         </p>
-      </AnimBody>
 
-      {/* Column headers */}
-      <AnimBody className="mb-2">
-        <div className="font-mono text-[10px] grid gap-3 sm:gap-4 grid-cols-[6rem_1fr_1fr] sm:grid-cols-[9rem_1fr_1fr]">
-          <span className="text-white/20"></span>
-          <span className="text-white/30 uppercase tracking-widest">Legacy</span>
-          <span className="text-brand/70 uppercase tracking-widest">Magnus</span>
+        <div className="compare">
+          {/* Legacy: tangled N² mesh */}
+          <div className="diag">
+            <div className="tag">Legacy bridges</div>
+            <div className="big" style={{ color: "var(--color-text-muted)" }}>~0%</div>
+            <div className="cap">Every chain bridged to every other. N² routes, constant rebalancing.</div>
+            <svg viewBox="0 0 300 188" height={200}>
+              <defs>
+                <marker id="ahg" markerWidth={7} markerHeight={7} refX={5} refY={3} orient="auto">
+                  <path d="M0,0 L6,3 L0,6 z" fill="rgba(154,154,152,.55)" />
+                </marker>
+              </defs>
+              <g stroke="rgba(154,154,152,.22)" strokeWidth={1}>
+                {MESH.map(([x1, y1, x2, y2], i) => (
+                  <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />
+                ))}
+              </g>
+              <g stroke="rgba(154,154,152,.5)" strokeWidth={1.1} fill="none" strokeDasharray="3 3">
+                <path d="M256,110 Q236,142 219,151" markerEnd="url(#ahg)" />
+                <path d="M44,110 Q60,143 81,151" markerEnd="url(#ahg)" />
+              </g>
+              <g fill="#16161A" stroke="rgba(154,154,152,.65)" strokeWidth={1.5}>
+                {NODES.map(([cx, cy], i) => (
+                  <circle key={i} cx={cx} cy={cy} r={7} />
+                ))}
+              </g>
+              <g fill="#6B6B69" fontFamily="var(--font-mono)" fontSize={9} letterSpacing={1} textAnchor="middle">
+                {LABELS.map(([x, y, t]) => (
+                  <text key={t} x={x} y={y}>{t}</text>
+                ))}
+              </g>
+            </svg>
+          </div>
+
+          {/* Magnus: hub-and-spoke, logo as hub */}
+          <div className="diag win">
+            <div className="tag">Magnus netting</div>
+            <div className="big" style={{ color: "var(--color-brand)" }}>90%+</div>
+            <div className="cap">One hub nets every chain. Transfers cancel out before they bridge.</div>
+            <svg viewBox="0 0 300 188" height={200}>
+              <g stroke="rgba(232,160,32,.45)" strokeWidth={1.4}>
+                {NODES.map(([x2, y2], i) => (
+                  <line key={i} x1={150} y1={95} x2={x2} y2={y2} />
+                ))}
+              </g>
+              <circle className="fd fd1" r={3} />
+              <circle className="fd fd2" r={3} />
+              <circle className="fd fd3" r={3} />
+              <g fill="#E8A020">
+                {NODES.map(([cx, cy], i) => (
+                  <circle key={i} cx={cx} cy={cy} r={7} />
+                ))}
+              </g>
+              <g fill="rgba(232,160,32,.78)" fontFamily="var(--font-mono)" fontSize={9} letterSpacing={1} textAnchor="middle">
+                {LABELS.map(([x, y, t]) => (
+                  <text key={t} x={x} y={y}>{t}</text>
+                ))}
+              </g>
+              {/* hub: clean dark disc gives the mark its clear space (no glow/effects per brand) */}
+              <circle cx={150} cy={95} r={30} fill="#0A0A0B" />
+              <circle cx={150} cy={95} r={27} fill="#0C0C0D" stroke="rgba(232,160,32,.55)" strokeWidth={1.5} />
+              <image href="/magnus-mark.png" x={134} y={81} width={32} height={28} />
+            </svg>
+          </div>
         </div>
-        <div className="border-t border-white/10 mt-1 mb-3" />
-      </AnimBody>
-
-      <AnimRows className="space-y-2">
-        {COMPARISON.map((row) => (
-          <AnimRow key={row.key}>
-            <div className="font-mono text-sm grid gap-3 sm:gap-4 items-baseline grid-cols-[6rem_1fr_1fr] sm:grid-cols-[9rem_1fr_1fr]">
-              <span className="text-white/30 text-xs">{row.key}</span>
-              <span className="text-white/30 text-xs">{row.legacy}</span>
-              <span className={`text-xs font-bold ${row.highlight ? "text-green" : "text-text-main"}`}>
-                {row.magnus}
-                {row.highlight && " ✓"}
-              </span>
-            </div>
-          </AnimRow>
-        ))}
-      </AnimRows>
-    </section>
+      </section>
+    </div>
   );
 }

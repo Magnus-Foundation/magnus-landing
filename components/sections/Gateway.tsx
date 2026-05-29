@@ -1,60 +1,40 @@
-"use client";
-
-import { AnimLabel, AnimHeading, AnimBody, AnimRows, AnimRow } from "../SectionAnimations";
-
 const RAILS = [
-  { region: "VN", name: "VietQR", type: "Instant Payment" },
-  { region: "KE", name: "M-Pesa", type: "Mobile Money" },
-  { region: "PH", name: "GCash",  type: "E-Wallet" },
-  { region: "IN", name: "UPI",    type: "Real-time Payment" },
-  { region: "BR", name: "PIX",    type: "Instant Payment" },
+  { reg: "VN", nm: "VietQR", ty: "Instant bank transfer" },
+  { reg: "KE", nm: "M-Pesa", ty: "Mobile money" },
+  { reg: "PH", nm: "GCash", ty: "E-wallet" },
+  { reg: "IN", nm: "UPI", ty: "Real-time payments" },
+  { reg: "BR", nm: "PIX", ty: "Instant payments" },
 ];
 
 export function Gateway() {
   return (
-    <section id="gateway" className="relative z-10 py-24 border-t border-brand/20">
-      <AnimLabel>
-        <div className="font-mono text-[10px] tracking-[0.22em] uppercase text-brand mb-8">
-          // 02 — FIAT RAILS
-        </div>
-      </AnimLabel>
-
-      <AnimHeading className="mb-10">
-        <h2 className="font-black text-3xl md:text-4xl uppercase tracking-tight leading-tight text-text-main">
-          Native Gateway Protocol
+    <div className="wrap">
+      <section className="blk blk-line" id="gateway">
+        <span className="eyebrow">Fiat rails · roadmap</span>
+        <h2 className="sec" style={{ marginTop: 16, maxWidth: "18ch" }}>
+          Built for the rails 2 billion people use.
         </h2>
-      </AnimHeading>
-
-      <AnimBody className="mb-6">
-        <span className="font-mono text-sm text-brand/70">$ magnus list rails --status</span>
-      </AnimBody>
-
-      <AnimBody className="mb-8">
-        <p className="font-mono text-xs text-white/40 leading-relaxed max-w-2xl">
-          Native fiat rail integration.{" "}
-          <span className="text-brand">MGP</span> offers gateway precompiles,
-          on-chain escrow, and slashable settlement attestations.
+        <p className="body-m" style={{ marginTop: 18 }}>
+          The protocol ships the primitives today: gateway precompiles, on-chain escrow, and
+          slashable settlement attestations. Rail integrations are on the roadmap, starting with
+          the five below.
         </p>
-      </AnimBody>
-
-      <AnimRows className="space-y-3">
-        {RAILS.map((rail) => (
-          <AnimRow key={rail.region} className="flex items-center gap-3">
-            <span className="text-green select-none flex-shrink-0">✓</span>
-            <span className="font-mono text-sm font-bold text-text-main w-24">{rail.name}</span>
-            <span className="font-mono text-xs text-white/30 w-8">{rail.region}</span>
-            <span className="font-mono text-xs text-white/40 flex-1">{rail.type}</span>
-            <span className="font-mono text-[10px] text-green tracking-widest">ACTIVE</span>
-          </AnimRow>
-        ))}
-      </AnimRows>
-
-      <AnimBody className="mt-8">
-        <p className="font-mono text-[11px] text-white/25 leading-relaxed">
-          <span className="text-brand/40">›</span>{"  "}Protocol primitives, not application-layer wrappers.
-          Integrated with Magnus Bridge Standard (MBS).
-        </p>
-      </AnimBody>
-    </section>
+        <div className="rails">
+          {RAILS.map((r) => (
+            <div className="rail" key={r.reg}>
+              <div className="st">PLANNED</div>
+              <div className="reg">{r.reg}</div>
+              <div className="nm">{r.nm}</div>
+              <div className="ty">{r.ty}</div>
+            </div>
+          ))}
+          <div className="rail more">
+            <div className="reg">+ MORE</div>
+            <div className="nm">17 in pipeline</div>
+            <div className="ty">SEPA, PromptPay, DuitNow</div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
