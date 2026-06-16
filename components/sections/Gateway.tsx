@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/Reveal";
+
 const RAILS = [
   { reg: "VN", nm: "VietQR", ty: "Instant bank transfer" },
   { reg: "KE", nm: "M-Pesa", ty: "Mobile money" },
@@ -9,17 +11,19 @@ const RAILS = [
 export function Gateway() {
   return (
     <div className="wrap">
-      <section className="blk blk-line" id="gateway">
-        <span className="eyebrow">Fiat rails · roadmap</span>
-        <h2 className="sec" style={{ marginTop: 16, maxWidth: "18ch" }}>
-          Built for the rails 2 billion people use.
-        </h2>
-        <p className="body-m" style={{ marginTop: 18 }}>
-          The protocol ships the primitives today: gateway precompiles, on-chain escrow, and
-          slashable settlement attestations. Rail integrations are on the roadmap, starting with
-          the five below.
-        </p>
-        <div className="rails">
+      <section className="blk blk-line" id="rails">
+        <Reveal>
+          <span className="eyebrow">Fiat rails · roadmap</span>
+          <h2 className="sec" style={{ marginTop: 16, maxWidth: "18ch" }}>
+            Built for the rails 2 billion people use.
+          </h2>
+          <p className="body-m" style={{ marginTop: 18 }}>
+            The protocol ships the primitives today: gateway precompiles, on-chain escrow, and
+            slashable settlement attestations. Rail integrations are on the roadmap, starting with
+            the five below.
+          </p>
+        </Reveal>
+        <Reveal className="rails" as="div">
           {RAILS.map((r) => (
             <div className="rail" key={r.reg}>
               <div className="st">PLANNED</div>
@@ -33,7 +37,7 @@ export function Gateway() {
             <div className="nm">17 in pipeline</div>
             <div className="ty">SEPA, PromptPay, DuitNow</div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

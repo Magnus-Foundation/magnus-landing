@@ -5,7 +5,7 @@ const GROUPS = [
     label: "Product",
     links: [
       { name: "Gas layer", href: "#gas" },
-      { name: "Gateway", href: "#gateway" },
+      { name: "Gateway", href: "#rails" },
       { name: "Netting engine", href: "#netting" },
       { name: "EVM runtime", href: "#perf" },
     ],
@@ -36,7 +36,7 @@ export function Footer() {
       <div className="wrap">
         <div className="foot-grid">
           <div>
-            <a href="/" className="logo">
+            <a href="#top" className="logo">
               <MagnusLogo size={24} />
               MAGNUS
             </a>

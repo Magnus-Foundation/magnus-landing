@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
 
-const inter = Inter({
+const space = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space",
+  display: "swap",
+});
+
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-hanken",
   display: "swap",
 });
 
@@ -41,8 +48,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
-      <body className="min-h-[100dvh] bg-bg text-text-main flex flex-col font-sans overflow-x-hidden">
+    <html lang="en" className={`${space.variable} ${hanken.variable} ${jetbrains.variable}`}>
+      <body className="min-h-[100dvh] flex flex-col font-sans overflow-x-hidden">
+        <div className="page-glow" />
         <Navbar />
         <main className="flex-1 w-full">{children}</main>
         <Footer />

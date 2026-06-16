@@ -1,19 +1,24 @@
 import { EyeOff, Layers } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import { Counter } from "@/components/Counter";
 
 export function EVM() {
   return (
     <div className="wrap">
       <section className="blk blk-line" id="perf">
-        <h2 className="sec" style={{ maxWidth: "16ch" }}>
-          Standard EVM, sub-second finality.
-        </h2>
-        <div className="bento">
+        <Reveal>
+          <span className="eyebrow">EVM runtime</span>
+          <h2 className="sec" style={{ marginTop: 16, maxWidth: "16ch" }}>
+            Standard EVM, sub-second finality.
+          </h2>
+        </Reveal>
+        <Reveal className="bento" as="div">
           <div className="cell">
-            <div className="num">200<span className="u">ms</span></div>
+            <div className="num"><Counter value={200} /><span className="u">ms</span></div>
             <div className="lab">Block time</div>
           </div>
           <div className="cell">
-            <div className="num">300<span className="u">ms</span></div>
+            <div className="num"><Counter value={300} /><span className="u">ms</span></div>
             <div className="lab">Deterministic finality</div>
           </div>
           <div className="cell feat-cell">
@@ -31,14 +36,14 @@ export function EVM() {
             </div>
           </div>
           <div className="cell">
-            <div className="num">100<span className="u">%</span></div>
+            <div className="num"><Counter value={100} /><span className="u">%</span></div>
             <div className="lab">Solidity compatible</div>
           </div>
           <div className="cell">
             <div className="num">∞</div>
             <div className="lab">Stablecoins supported</div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );
